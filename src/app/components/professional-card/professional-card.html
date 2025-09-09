@@ -1,0 +1,30 @@
+<div class="professional-card" 
+     [ngStyle]="getPositionStyle()"
+     [ngClass]="getRatingColorClass()"
+     (mouseenter)="onMouseEnter()" 
+     (mouseleave)="onMouseLeave()">
+  
+  <div class="card-content">
+    <!-- Rating en esquina superior -->
+    <div class="rating-badge">{{ profile.rating }}</div>
+
+    <!-- Posición en esquina superior derecha -->
+    <div class="position-badge">{{ getRoleAbbreviation() }}</div>
+    <!-- Foto placeholder -->
+    <div class="photo-placeholder">
+      <span class="photo-text">FOTO</span>
+    </div>
+
+    <!-- Nombre -->
+    <div class="name-container">
+      <div class="first-name">{{ getFirstName() }}</div>
+      <div class="last-name">{{ getLastName() }}</div>
+    </div>
+
+    <!-- Bandera placeholder -->
+    <div class="flag-placeholder"></div>
+
+    <!-- Logo del club placeholder -->
+    <div class="club-logo-placeholder"></div>
+  </div>
+</div>

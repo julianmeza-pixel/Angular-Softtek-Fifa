@@ -1,0 +1,111 @@
+.professional-card {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 112px;
+  height: 160px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 20;
+  }
+
+  &.rating-gold {
+    background: linear-gradient(to bottom, #fbbf24, #d97706);
+  }
+
+  &.rating-silver {
+    background: linear-gradient(to bottom, #d1d5db, #6b7280);
+  }
+
+  &.rating-bronze {
+    background: linear-gradient(to bottom, #d97706, #92400e);
+  }
+}
+
+.card-content {
+  padding: 6px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.rating-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.position-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.photo-placeholder {
+  width: 64px;
+  height: 80px;
+  margin: 16px auto 8px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+
+  .photo-text {
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+.name-container {
+  .first-name, .last-name {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.flag-placeholder {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  width: 16px;
+  height: 12px;
+  background: #ef4444;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.club-logo-placeholder {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  background: #2563eb;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}

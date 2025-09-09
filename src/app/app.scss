@@ -1,0 +1,137 @@
+.fifa-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #15803d;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 16px 0;
+
+  .header-content {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 12px 24px;
+
+    .title {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+      margin: 0 0 4px 0;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+}
+
+.professionals-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.details-overlay {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 30;
+  width: 320px;
+
+  .details-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 16px;
+    color: #374151;
+
+    .details-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+
+      .rating-display {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+
+        &.rating-gold {
+          background: linear-gradient(to bottom, #fbbf24, #d97706);
+        }
+
+        &.rating-silver {
+          background: linear-gradient(to bottom, #d1d5db, #6b7280);
+        }
+
+        &.rating-bronze {
+          background: linear-gradient(to bottom, #d97706, #92400e);
+        }
+      }
+
+      .profile-info {
+        .profile-name {
+          font-weight: bold;
+          font-size: 18px;
+          margin: 0;
+        }
+
+        .profile-role {
+          color: #6b7280;
+          margin: 0;
+        }
+      }
+    }
+
+    .details-content {
+      .detail-section {
+        margin-bottom: 12px;
+
+        .section-title {
+          font-weight: 600;
+          font-size: 14px;
+          margin: 0 0 8px 0;
+          color: #2563eb;
+        }
+
+        .skills-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4px;
+
+          .skill-tag {
+            font-size: 12px;
+            background: #f3f4f6;
+            padding: 4px 8px;
+            border-radius: 4px;
+          }
+        }
+
+        .section-text {
+          font-size: 12px;
+          color: #6b7280;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

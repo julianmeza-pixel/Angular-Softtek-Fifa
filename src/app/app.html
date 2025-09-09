@@ -1,0 +1,61 @@
+<div class="fifa-container">
+  <!-- Campo de fútbol -->
+  <app-fifa-field></app-fifa-field>
+
+  <!-- Header -->
+
+
+  <!-- Profesionales en formación -->
+  <div class="professionals-container">
+    <app-professional-card
+      *ngFor="let profile of professionals; let i = index"
+      [profile]="profile"
+      [position]="formation[i]"
+      (cardHover)="onProfileHover($event)"
+      (cardLeave)="onProfileLeave()">
+    </app-professional-card>
+  </div>
+
+  <!-- Overlay de detalles -->
+  <div *ngIf="hoveredProfile" class="details-overlay">
+    <div class="details-card">
+      <div class="details-header">
+       <div class="rating-display" [ngClass]="getRatingColorClass(hoveredProfile?.rating || 0)">
+
+          {{ hoveredProfile?.rating }}
+        </div>
+        <div class="profile-info">
+          <h3 class="profile-name">{{ hoveredProfile?.name }}</h3>
+          <p class="profile-role">{{ hoveredProfile?.role }}</p>
+        </div>
+      </div>
+
+      <div class="details-content">
+        <!-- Skills -->
+        <div class="detail-section">
+          <h4 class="section-title">Habilidades</h4>
+          <div class="skills-grid">
+            <div *ngFor="let skill of parseSkills(hoveredProfile.skills)" 
+                 class="skill-tag">
+              {{ skill }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="detail-section">
+          <h4 class="section-title">Idiomas</h4>
+          <p class="section-text">
+  {{ getLanguagesText(hoveredProfile?.languages || '') }}
+</p>
+        </div>
+
+        <!-- Certifications -->
+        <div class="detail-section">
+          <h4 class="section-title">Certificaciones</h4>
+          <p class="section-text">{{ hoveredProfile }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,8 @@ import { ProfessionalProfile, Formation } from '../models/professional.interface
   providedIn: 'root'
 })
 export class ProfessionalService {
+
+  
   
   private mockProfiles: ProfessionalProfile[] = [
      {
@@ -20,7 +22,7 @@ export class ProfessionalService {
   },
   {
     id: 2,
-    name: "María López",
+    name: "María Juan",
     role: "Analista de Datos",
     skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
     languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
@@ -30,7 +32,7 @@ export class ProfessionalService {
   },
   {
     id: 3,
-    name: "María López",
+    name: "María Juan",
     role: "Analista de Datos",
     skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
     languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
@@ -40,7 +42,7 @@ export class ProfessionalService {
   },
   {
     id: 4,
-    name: "María López",
+    name: "María Juan",
     role: "Analista de Datos",
     skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
     languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
@@ -49,8 +51,8 @@ export class ProfessionalService {
     photo: "https://randomuser.me/api/portraits/women/45.jpg"
   },
   {
-    id: 4,
-    name: "María López",
+    id: 5,
+    name: "María Juan",
     role: "Analista de Datos",
     skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
     languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
@@ -59,8 +61,58 @@ export class ProfessionalService {
     photo: "https://randomuser.me/api/portraits/women/45.jpg"
   },
   {
-    id: 4,
-    name: "María López",
+    id: 6,
+    name: "María Juan",
+    role: "Analista de Datos",
+    skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
+    languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
+    certifications: "Azure Data Fundamentals",
+    rating: 87,
+    photo: "https://randomuser.me/api/portraits/women/45.jpg"
+  },
+  {
+    id: 7,
+    name: "María Juan",
+    role: "Analista de Datos",
+    skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
+    languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
+    certifications: "Azure Data Fundamentals",
+    rating: 87,
+    photo: "https://randomuser.me/api/portraits/women/45.jpg"
+  },
+  {
+    id: 8,
+    name: "María Juan",
+    role: "Analista de Datos",
+    skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
+    languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
+    certifications: "Azure Data Fundamentals",
+    rating: 87,
+    photo: "https://randomuser.me/api/portraits/women/45.jpg"
+  },
+  {
+    id: 9,
+    name: "María Juan",
+    role: "Analista de Datos",
+    skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
+    languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
+    certifications: "Azure Data Fundamentals",
+    rating: 87,
+    photo: "https://randomuser.me/api/portraits/women/45.jpg"
+  },
+  {
+    id: 10,
+    name: "María Juan",
+    role: "Analista de Datos",
+    skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
+    languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
+    certifications: "Azure Data Fundamentals",
+    rating: 87,
+    photo: "https://randomuser.me/api/portraits/women/45.jpg"
+  },
+  {
+    id: 11,
+    name: "María Juan",
     role: "Analista de Datos",
     skills: "SKILLS\n· SQL\n· Power BI\n· Python\n· Estadística",
     languages: "IDIOMAS\nEspañol Nativo\nInglés B2 - Intermedio",
@@ -71,19 +123,23 @@ export class ProfessionalService {
     // ... resto de perfiles del mockProfiles
   ];
 
-  private formation: Formation[] = [
-    { x: 50, y: 82 }, // GK
-    { x: 15, y: 68 }, // LB
-    { x: 35, y: 70 }, // CB
-    { x: 65, y: 70 }, // CB
-    { x: 85, y: 68 }, // RB
-    { x: 20, y: 48 }, // LM
-    { x: 50, y: 50 }, // CM
-    { x: 80, y: 48 }, // RM
-    { x: 20, y: 22 }, // LW
-    { x: 50, y: 20 }, // ST
-    { x: 80, y: 22 }, // RW
-  ];
+
+  private formation: Formation[]= [
+  { x: 50, y: 80 }, // Portero
+  { x: 20, y: 65 }, // Defensa izquierdo
+  { x: 40, y: 65 }, // Defensa central izq
+  { x: 60, y: 65 }, // Defensa central der
+  { x: 80, y: 65 }, // Defensa derecho
+  { x: 30, y: 50 }, // Mediocentro izq
+  { x: 50, y: 50 }, // Mediocentro
+  { x: 70, y: 50 }, // Mediocentro der
+  { x: 30, y: 30 }, // Delantero izq
+  { x: 50, y: 25 }, // Delantero centro
+  { x: 70, y: 30 }  // Delantero der
+  
+];
+
+  
 
   getProfessionals(): Observable<ProfessionalProfile[]> {
     return of(this.mockProfiles);

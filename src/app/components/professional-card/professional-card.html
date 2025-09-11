@@ -1,30 +1,32 @@
-<div class="professional-card" 
-     [ngStyle]="getPositionStyle()"
-     [ngClass]="getRatingColorClass()"
-     (mouseenter)="onMouseEnter()" 
-     (mouseleave)="onMouseLeave()">
-  
-  <div class="card-content">
-    <!-- Rating en esquina superior -->
-    <div class="rating-badge">{{ profile.rating }}</div>
+<!-- professional-card.html -->
+<div class="card-container">
+  <div class="card" [class.flipped]="flipped" (click)="toggleFlip()">
+    <div class="card-inner-flip">
 
-    <!-- Posición en esquina superior derecha -->
-    <div class="position-badge">{{ getRoleAbbreviation() }}</div>
-    <!-- Foto placeholder -->
-    <div class="photo-placeholder">
-      <span class="photo-text">FOTO</span>
+      <!-- FRONT -->
+      <div class="card-front">
+        <div class="golden-border"></div>
+        <div class="card-inner">
+          <div class="card-header">
+            <div class="card-level">{{ profile.rating }}</div>
+            <div class="card-position">{{ profile.role }}</div>
+          </div>
+          <div class="card-name">
+            <div class="card-player-name">{{ profile.name }}</div>
+            <div class="card-experience">{{ profile.certifications }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BACK -->
+      <div class="card-back">
+        <div class="card-inner">
+          <h3>SKILLS</h3>
+          <pre>{{ profile.skills }}</pre>
+          <h3>IDIOMAS</h3>
+          <pre>{{ profile.languages }}</pre>
+        </div>
+      </div>
     </div>
-
-    <!-- Nombre -->
-    <div class="name-container">
-      <div class="first-name">{{ getFirstName() }}</div>
-      <div class="last-name">{{ getLastName() }}</div>
-    </div>
-
-    <!-- Bandera placeholder -->
-    <div class="flag-placeholder"></div>
-
-    <!-- Logo del club placeholder -->
-    <div class="club-logo-placeholder"></div>
   </div>
 </div>

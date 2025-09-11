@@ -1,111 +1,341 @@
-.professional-card {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 112px;
-  height: 160px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(234, 179, 8, 0.5);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  overflow: hidden;
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  &:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    z-index: 20;
-  }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+    }
+    .card-preview {
+      position: relative;
+      top: 20px;
+    }
 
-  &.rating-gold {
-    background: linear-gradient(to bottom, #fbbf24, #d97706);
-  }
+    .card-container {
+      position: relative;
+      position: sticky;
+      top: 2rem;
+    }
 
-  &.rating-silver {
-    background: linear-gradient(to bottom, #d1d5db, #6b7280);
-  }
+    .flip-instruction {
+      text-align: center;
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
 
-  &.rating-bronze {
-    background: linear-gradient(to bottom, #d97706, #92400e);
-  }
-}
+    .card {
+      position: relative;
+     
+      background: #ffffff;
+      perspective: 1000px;
+      cursor: pointer;
+      clip-path: polygon(8% 0%,
+          92% 0%,
+          100% 8%,
+          100% 85%,
+          92% 92%,
+          85% 95%,
+          65% 98%,
+          50% 100%,
+          35% 98%,
+          15% 95%,
+          8% 92%,
+          0% 85%,
+          0% 8%);
+    }
 
-.card-content {
-  padding: 6px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-  position: relative;
-}
+    .card-inner-flip {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
 
-.rating-badge {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  font-size: 14px;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  padding: 0 4px;
-}
+    .card.flipped .card-inner-flip {
+      transform: rotateY(180deg);
+    }
 
-.position-badge {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  font-size: 12px;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  padding: 0 4px;
-}
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      clip-path: polygon(8% 0%, 92% 0%, 100% 8%, 100% 85%, 92% 92%, 85% 95%, 65% 98%, 50% 100%, 35% 98%, 15% 95%, 8% 92%, 0% 85%, 0% 8%);
+      border-radius: 10px;
+      overflow: hidden;
+    }
 
-.photo-placeholder {
-  width: 64px;
-  height: 80px;
-  margin: 16px auto 8px;
-  background: #e5e7eb;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #d1d5db;
+    .card-front {
+      z-index: 2;
+      background: white;
+    }
 
-  .photo-text {
-    color: #6b7280;
-    font-size: 12px;
-    font-weight: 600;
-  }
-}
+    .card-back {
+      transform: rotateY(180deg);
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.name-container {
-  .first-name, .last-name {
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 4px;
-    line-height: 1.2;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  }
-}
+    .back-content {
+      text-align: center;
+      padding: 1.5rem;
+      color: #1f2937;
+      width: 100%;
+    }
 
-.flag-placeholder {
-  position: absolute;
-  bottom: 4px;
-  left: 4px;
-  width: 16px;
-  height: 12px;
-  background: #ef4444;
-  border-radius: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
+    .golden-border {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+      clip-path: polygon(8% 0%,
+          92% 0%,
+          100% 8%,
+          100% 85%,
+          92% 92%,
+          85% 95%,
+          65% 98%,
+          50% 100%,
+          35% 98%,
+          15% 95%,
+          8% 92%,
+          0% 85%,
+          0% 8%);
+    }
 
-.club-logo-placeholder {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 16px;
-  height: 16px;
-  background: #2563eb;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
+    .card-inner {
+      position: absolute;
+      inset: 4px;
+      background: #ffffff;
+      clip-path: polygon(8% 0%,
+          92% 0%,
+          100% 8%,
+          100% 85%,
+          92% 92%,
+          85% 95%,
+          65% 98%,
+          50% 100%,
+          35% 98%,
+          15% 95%,
+          8% 92%,
+          0% 85%,
+          0% 8%);
+      padding: 0.2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .decorative-curves {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 128px;
+      height: 32px;
+      z-index: 10;
+    }
+
+    .decorative-curves svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .card-header {
+      text-align: center;
+      margin-top: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .back-content h3 {
+      color: #f59e0b;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .back-content .skill-list {
+      text-align: left;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    .back-content .skill-item-back {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 0.875rem;
+    }
+
+    .back-content .skill-item-back:last-child {
+      border-bottom: none;
+    }
+
+    .back-content .skill-name {
+      color: #374151;
+      font-weight: 600;
+    }
+
+    .back-content .skill-level {
+      color: #f59e0b;
+      font-weight: bold;
+    }
+
+    .card-level {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #f59e0b;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-position {
+      font-size: 0.875rem;
+      
+      color: #374151;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    
+
+    
+
+
+    .card-name {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-player-name {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+    }
+
+    .card-experience {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-company {
+      font-size: 0.875rem;
+      color: #f59e0b;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .card-stats {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      padding: 0.5rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .stat-value {
+      color: #1f2937;
+      font-weight: bold;
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      color: #6b7280;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.625rem;
+    }
+
+    .back-skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .back-skill-input {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .back-skill-input input[type="text"] {
+      flex: 1;
+    }
+
+    .back-skill-input input[type="number"] {
+      width: 60px;
+    }
+
+    .add-skill-btn {
+      background: #009688;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .add-skill-btn:hover {
+      background: #00796b;
+    }
+
+    .remove-skill-btn {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .remove-skill-btn:hover {
+      background: #d32f2f;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .card-container {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+  

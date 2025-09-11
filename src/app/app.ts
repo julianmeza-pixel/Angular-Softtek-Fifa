@@ -5,11 +5,12 @@ import { ProfessionalService } from './services/professional.service';
 import { ProfessionalCard } from './components/professional-card/professional-card';
 import { CommonModule, NgClass, NgForOf, NgIf } from '@angular/common';
 import { FifaFieldComponent } from './components/fifa-field/fifa-field';
+import { Stadium } from "./components/stadium/stadium";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ProfessionalCard,NgClass,FifaFieldComponent,CommonModule],
+  imports: [RouterOutlet, ProfessionalCard, NgClass , CommonModule, Stadium],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

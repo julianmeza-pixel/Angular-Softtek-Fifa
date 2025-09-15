@@ -3,7 +3,7 @@
     <app-stadium></app-stadium>
   </div>
   <div class="players-layer">
-    @for (profile of professionals; let i = $index; track profile.id) {
+    @for (profile of professionals; let i = $index; track profile.IS) {
       <app-professional-card
         [profile]="profile"
         class="player-card"
@@ -11,11 +11,17 @@
           left: formation[i]?.x + '%',
           top: formation[i]?.y + '%',
           transform: 'translate(-50%, -50%)'
+          
         }"
-        (mouseenter)="onProfileHover(profile)"
-        (mouseleave)="onProfileLeave()"
+       (showDetails)="openProfileModal($event)"
       >
       </app-professional-card>
     }
   </div>
+  
+  <app-modal-details 
+    *ngIf="selectedProfile" 
+    [profile]="selectedProfile" 
+    (closeModal)="selectedProfile = null">
+  </app-modal-details>
 </div>

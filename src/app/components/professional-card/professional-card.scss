@@ -16,12 +16,6 @@
       top: 20px;
     }
 
-    .card-container {
-      position: relative;
-      position: sticky;
-      top: 2rem;
-    }
-
     .flip-instruction {
       text-align: center;
       color: #666;
@@ -72,6 +66,7 @@
       clip-path: polygon(8% 0%, 92% 0%, 100% 8%, 100% 85%, 92% 92%, 85% 95%, 65% 98%, 50% 100%, 35% 98%, 15% 95%, 8% 92%, 0% 85%, 0% 8%);
       border-radius: 10px;
       overflow: hidden;
+      
     }
 
     .card-front {
@@ -85,6 +80,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      
     }
 
     .back-content {
@@ -193,7 +189,7 @@
     }
 
     .card-level {
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: bold;
       color: #f59e0b;
       margin-bottom: 0.5rem;
@@ -206,11 +202,6 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-
-    
-
-    
-
 
     .card-name {
       text-align: center;
@@ -337,5 +328,93 @@
         align-items: center;
       }
     }
+
+    .player-card {
+  position: absolute;
+  width: 10%;
+  min-width: 70px;
+  max-width: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+
+
+
+.card-container {
+  perspective: 1000px;
+  transition: all 0.4s ease-in-out;
+  z-index: 1;
+}
+
+.card-container.flipped .card-inner-flip {
+  transform: rotateY(180deg);
+}
+
+.card-inner-flip {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: white;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* ⭐ expansión modal */
+.card-container.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+/* brillo diagonal */
+.card-inner-flip::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.0) 60%
+  );
+  transform: rotate(25deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(25deg);
+  }
+}
+
 
   

@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output,OnInit  } from '@angular/core';
 import { ProfessionalProfile, Formation} from '../../models/professional.interface';
 import { ProfessionalService } from '../../services/professional.service';
-import { NgClass, NgStyle, NgFor  } from '@angular/common';
+import { NgClass, NgStyle, NgFor, UpperCasePipe } from '@angular/common';
 interface Skill {
   name: string;
   level: number;
 }
 @Component({
   selector: 'app-professional-card',
-  imports: [NgStyle,NgClass,NgFor],
+  imports: [NgStyle,NgClass,NgFor, UpperCasePipe],
   templateUrl: './professional-card.html',
   styleUrl: './professional-card.scss'
 })
@@ -17,6 +17,7 @@ interface Skill {
 export class ProfessionalCard {
   constructor(private professionalService:ProfessionalService) { }
   @Input() profile!: ProfessionalProfile;
+   @Output() showDetails = new EventEmitter<any>();
   professionals: ProfessionalProfile[] = [];
   formation: Formation[] = [];
   playerName = 'Juan Pérez';
@@ -24,6 +25,9 @@ export class ProfessionalCard {
   level = 'senior';
   experience = 'JavaScript';
   photoUrl: string | null = null;
+  loading = true;
+  error = '';
+
 
   // Mapping de nivel → número
   levelMapping: Record<string, number> = {
@@ -35,35 +39,9 @@ export class ProfessionalCard {
     'architect': 96
   };
 
-  // Stats
-  stats = {
-    coding: 85,
-    problemSolving: 88,
-    communication: 82,
-    leadership: 75,
-    creativity: 90,
-    teamwork: 87
-  };
-
-  // Skills traseros
-  backTitle = 'SKILLS PRINCIPALES';
-  backSkills: Skill[] = [
-    { name: 'React', level: 90 },
-    { name: 'Node.js', level: 85 },
-    { name: 'TypeScript', level: 88 },
-    { name: 'MongoDB', level: 82 }
-  ];
-
-  // Flip de la carta
-  flipped = false;
+  
   ngOnInit(){
     this.formation = this.professionalService.getFormation();
-   // this.professionals = this.professionalService.getProfessionals();
-  }
-  
-
-  toggleFlip() {
-    this.flipped = !this.flipped;
   }
 
   updatePhoto(event: Event) {
@@ -75,12 +53,9 @@ export class ProfessionalCard {
     }
   }
 
-  addBackSkill() {
-    this.backSkills.push({ name: '', level: 50 });
-  }
-
-  removeBackSkill(index: number) {
-    this.backSkills.splice(index, 1);
+ 
+  openModal() {
+    this.showDetails.emit(this.profile);
   }
 }
 

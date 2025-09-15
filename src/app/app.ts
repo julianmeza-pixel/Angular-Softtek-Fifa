@@ -6,16 +6,17 @@ import { ProfessionalCard } from './components/professional-card/professional-ca
 import { CommonModule, NgClass, NgForOf, NgIf } from '@angular/common';
 import { FifaFieldComponent } from './components/fifa-field/fifa-field';
 import { Stadium } from "./components/stadium/stadium";
+import { ModalDetails } from "./shared/modal/modal-details/modal-details";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ProfessionalCard, NgClass , CommonModule, Stadium],
+  imports: [RouterOutlet, ProfessionalCard, NgClass, CommonModule, Stadium, ModalDetails],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-
+  selectedProfile: any = null;
   professionals: ProfessionalProfile[] = [];
   formation: Formation[] = [];
   hoveredProfile: ProfessionalProfile | null = null;
@@ -55,4 +56,17 @@ export class App {
   getLanguagesText(languages: string): string {
     return languages.replace('IDIOMAS\n', '');
   }
+
+  toggleCard(profile: any) {
+  if (this.selectedProfile?.id === profile.id) {
+    this.selectedProfile = null; 
+  } else {
+    this.selectedProfile = profile; 
+  }
+}
+
+openProfileModal(profile: any) {
+    this.selectedProfile = profile;
+  }
+
 }

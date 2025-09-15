@@ -1,16 +1,34 @@
 .stadium-container {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(204, 204, 222, 1) 35%, rgba(1, 32, 36, 1) 100%);
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(
+    140deg,
+   /* #b8860b 0%,     
+    #ffd700 20%,   
+    #ffffff 40%,    
+    #ffd700 60%,   
+    #b8860b 80%,    
+    #b8860b 100%    */
+    rgba(2, 0, 36, 1) 0%, rgba(204, 204, 222, 1) 35%, rgba(1, 32, 36, 1) 100%,rgba(2, 0, 36, 1) 0%, rgba(204, 204, 222, 1) 35%, rgba(1, 32, 36, 1) 100%
+  );
+  background-size: 200% 100%;
+  animation: stadium 5s infinite linear;
+}
+
+@keyframes stadium {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 500%;
+  }
 }
 
 .stadium-canvas {
   width: 100%;
   height: 100%;
   display: block;
-  background: transparent !important; /* 👈 permite ver el gradient detrás */
+  background: transparent !important;
   position: absolute;
   top: 0;
   left: 0;

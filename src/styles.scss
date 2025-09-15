@@ -66,3 +66,16 @@
 .player-card .card-company {
   font-size: 0.6rem;
 }
+
+.player-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.6s ease, scale 0.3s ease;
+}
+
+.player-card.flipped {
+  transform: rotateY(180deg);
+}
+
+
+

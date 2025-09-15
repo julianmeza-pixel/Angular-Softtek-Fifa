@@ -1,11 +1,9 @@
 export interface ProfessionalProfile {
-  id: number;
-  name: string;
-  role: string;
-  skills: string;
-  languages: string;
-  certifications: string;
-  photo?: string;
+  IS: string;
+  SKILLS: string;
+  ROL: string;
+  IDIOMAS: string;
+  CERTIFICACIONES: string;
   rating: number;
 }
 

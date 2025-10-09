@@ -1,0 +1,129 @@
+
+:host {
+  --glass-bg: rgba(110, 97, 118, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --text-color: #ffffff;
+  --gold-text: #ffd700;
+  --softtek: linear-gradient(-135deg,  #003d82 0%, #0056b3 25%, #7ed321 50%, #9ee83f 100%);
+  --azul-sftk: linear-gradient( 90deg, #004080 0%, #0056b3 40%, #0073e6 80%, #004080 100% );
+  --dark: linear-gradient( 135deg,  #0f0f0f 0%, #2d2d2d 25%, #4a4a4a 50%, #2d2d2d 75%, #0f0f0f 100% );
+  --initial-fifa:   linear-gradient(160deg, #1B3A6A 0%, #004080 100%);
+}
+::ng-deep .mat-mdc-tab-body-content {
+  overflow: visible !important;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.modal-content {
+  position: relative;
+  background: var(--initial-fifa);
+  animation: gold-flow 4s ease-in-out infinite alternate;
+  border-radius: 20px;
+  animation: card-entry 0.6s ease-out;
+  perspective: 1000px;
+  padding: 2rem;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  clip-path: polygon(
+    8% 0%, 92% 0%, 100% 8%, 
+    100% 85%, 92% 92%, 
+    85% 95%, 65% 98%, 
+    50% 100%, 35% 98%, 
+    15% 95%, 8% 92%, 
+    0% 85%, 0% 8%
+  );
+  
+}
+
+.modal-header {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+
+@keyframes gold-flow {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  100% {
+    background-position: 100% 50%;
+    filter: brightness(1.1);
+  }
+}
+
+
+
+
+
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+
+@keyframes card-entry {
+  0% {
+    transform: scale(0.7) rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+
+::ng-deep .mat-mdc-tab .mdc-tab-indicator {
+  background: --softtek;
+  
+}
+
+
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
+  font-weight: 600;
+  color: #fff !important;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #5DA526 !important;
+  border-bottom: 1px solid #FEBE10;
+}
+
+
+
+
+::ng-deep .mat-mdc-tab-body-content {
+  ul, li {
+    color: #D9D9D9;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    list-style: disc;
+    margin-left: 1.2rem;
+  }
+}
+

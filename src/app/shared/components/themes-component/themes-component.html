@@ -1,0 +1,49 @@
+<div class="theme-selector">
+  <!-- Selector dropdown -->
+  <div class="theme-dropdown" [class.open]="isDropdownOpen">
+    <button 
+      class="theme-button" 
+      (click)="toggleDropdown()"
+      [attr.aria-expanded]="isDropdownOpen"
+      aria-label="Selector de tema">
+      <span class="theme-icon">🎨</span>
+      <span class="theme-text">{{ getCurrentThemeName() }}</span>
+      <span class="theme-arrow" [class.rotated]="isDropdownOpen">▼</span>
+    </button>
+    
+    @if (isDropdownOpen) {
+      <div class="theme-options">
+        @for (theme of availableThemes; track theme.id) {
+          <button 
+            class="theme-option"
+            [class.active]="theme.id === currentTheme"
+            (click)="selectTheme(theme.id)"
+            [attr.aria-selected]="theme.id === currentTheme">
+            
+            <span class="theme-preview" [style]="getThemePreviewStyle(theme)"></span>
+            <span class="theme-name">{{ theme.name }}</span>
+
+            @if (theme.id === currentTheme) {
+              <span class="check-icon">✓</span>
+            }
+          </button>
+        }
+      </div>
+    }
+  </div>
+  @if (showSimpleToggle) {
+    <div class="theme-toggle">
+      <label class="toggle-switch">
+        <input 
+          type="checkbox" 
+          [checked]="currentTheme === 'dark'"
+          (change)="toggleTheme()"
+          aria-label="Alternar tema oscuro">
+        <span class="toggle-slider">
+          <span class="toggle-icon sun">☀️</span>
+          <span class="toggle-icon moon">🌙</span>
+        </span>
+      </label>
+    </div>
+  }
+</div>

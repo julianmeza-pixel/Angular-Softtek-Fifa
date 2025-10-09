@@ -1,0 +1,7 @@
+<div class="rol-container">
+  @if (rol.ROL && rol.ROL.trim() !== '') {
+    <span class="rol-text">{{ rol.ROL | capitalcase }}</span>
+  } @else {
+    <span class="rol-text rol-fallback">{{fallbackText | capitalcase }}</span>
+  }
+</div>

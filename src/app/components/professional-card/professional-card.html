@@ -1,33 +1,13 @@
 <div class="card-container">
-  <div class="card" (click)="openModal()">
-    <div class="card-inner-flip">
-
-      <!-- FRONT -->
-      <div class="card-front">
-        <div class="golden-border"></div>
-        <div class="card-inner">
-          <div class="card-header">
-            <div class="card-level">{{ profile.ROL | uppercase }}</div>
-          </div>
-          <div class="card-name">
-            <div class="card-player-name">{{ profile.IS }}</div>
-          </div>
-        </div>
+  <div class="card" (click)="openModal()" role="button" tabindex="0">
+    <div class="card-front">
+      <div class="golden-border"></div>
+      <div class="card-inner">
+        <app-user-rol-component [rol]="profile"></app-user-rol-component>   
+        <app-avatar-component [user]="profile"></app-avatar-component> 
+            <app-user-is-component [is]="profile"></app-user-is-component>
+        
       </div>
-
-      <!-- BACK -->
-      <!--<div class="card-back">
-        <div class="golden-border"></div>
-        <div class="card-inner">
-          <h3>SKILLS</h3>
-          <pre>{{ profile.skills }}</pre>
-          <h3>CERTIFICACIONES</h3>
-          <div class="card-experience">{{ profile.certifications }}</div>
-          <h3>IDIOMAS</h3>
-          <pre>{{ profile.languages }}</pre>
-        </div>
-      </div>-->
-
     </div>
   </div>
 </div>

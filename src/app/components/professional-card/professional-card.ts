@@ -1,35 +1,30 @@
-import { Component, EventEmitter, Input, Output,OnInit  } from '@angular/core';
-import { ProfessionalProfile, Formation} from '../../models/professional.interface';
+import { Component, EventEmitter, Input, Output,OnInit , } from '@angular/core';
+import { ProfessionalProfile, Formation} from '../../shared/interfaces/professional.interface';
+import { AvatarComponent } from '../../shared/components/avatar-component/avatar-component'
 import { ProfessionalService } from '../../services/professional.service';
-import { NgClass, NgStyle, NgFor, UpperCasePipe } from '@angular/common';
-interface Skill {
-  name: string;
-  level: number;
-}
+import { UserRolComponent } from "../../shared/components/user-rol-component/user-rol-component";
+import { UserIsComponent } from "../../shared/components/user-is-component/user-is-component";
+import { CommonModule } from '@angular/common';
+
+
 @Component({
   selector: 'app-professional-card',
-  imports: [NgStyle,NgClass,NgFor, UpperCasePipe],
+  imports: [AvatarComponent, UserRolComponent, UserIsComponent, CommonModule],
   templateUrl: './professional-card.html',
   styleUrl: './professional-card.scss'
 })
 
 
 export class ProfessionalCard {
-  constructor(private professionalService:ProfessionalService) { }
+  constructor(private professionalService:ProfessionalService, ) { }
+
   @Input() profile!: ProfessionalProfile;
-   @Output() showDetails = new EventEmitter<any>();
+  @Output() showDetails = new EventEmitter<any>();
   professionals: ProfessionalProfile[] = [];
   formation: Formation[] = [];
-  playerName = 'Juan Pérez';
-  position = 'Full Stack Developer';
-  level = 'senior';
-  experience = 'JavaScript';
-  photoUrl: string | null = null;
   loading = true;
   error = '';
 
-
-  // Mapping de nivel → número
   levelMapping: Record<string, number> = {
     'trainee': 65,
     'junior': 72,
@@ -42,15 +37,6 @@ export class ProfessionalCard {
   
   ngOnInit(){
     this.formation = this.professionalService.getFormation();
-  }
-
-  updatePhoto(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files?.length) {
-      const reader = new FileReader();
-      reader.onload = e => this.photoUrl = e.target?.result as string;
-      reader.readAsDataURL(input.files[0]);
-    }
   }
 
  

@@ -1,0 +1,46 @@
+<div class="modal-overlay" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+      
+	  <div class="modal-header">
+        <h3>{{ profile.IS | uppercase}}</h3>
+      </div>
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="TAXONOMIA">
+           <ul>
+            <li>
+              {{tax}}
+            </li>
+            <li>
+              {{profile.ROL}}
+            </li>
+            <li>
+              {{profile.SENIORITY}}
+            </li>
+            
+           </ul>
+        </mat-tab>
+        <mat-tab label="CERTIFICACIONES">
+          <ul>
+            @for (cert of certifications; track cert) {
+              <li>{{ cert }}</li>
+            }
+          </ul>
+        </mat-tab>
+        <mat-tab label="SKILLS">
+          <ul>
+            @for (skl of skills; track skl) {
+              <li>{{ skl }}</li>
+            }
+          </ul>
+        </mat-tab>
+        <mat-tab label="IDIOMAS">
+          <ul>
+            @for (lgh of idiomas; track lgh) {
+              <li>{{ lgh }}</li>
+            }
+          </ul>
+        </mat-tab>
+        
+      </mat-tab-group>
+  </div>
+</div>

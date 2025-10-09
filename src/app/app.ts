@@ -1,72 +1,43 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Formation, ProfessionalProfile } from './models/professional.interface';
+import { Component, computed, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Formation, ProfessionalProfile } from './shared/interfaces/professional.interface';
 import { ProfessionalService } from './services/professional.service';
 import { ProfessionalCard } from './components/professional-card/professional-card';
-import { CommonModule, NgClass, NgForOf, NgIf } from '@angular/common';
-import { FifaFieldComponent } from './components/fifa-field/fifa-field';
 import { Stadium } from "./components/stadium/stadium";
-import { ModalDetails } from "./shared/modal/modal-details/modal-details";
+import { ModalDetails } from "./shared/components/modal-details/modal-details";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ProfessionalCard, NgClass, CommonModule, Stadium, ModalDetails],
+  imports: [ProfessionalCard, CommonModule, Stadium, ModalDetails],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  selectedProfile: any = null;
-  professionals: ProfessionalProfile[] = [];
-  formation: Formation[] = [];
-  hoveredProfile: ProfessionalProfile | null = null;
-  protected readonly title = signal('SofttekFifa');
+  private professionalService = inject(ProfessionalService);
+  professionals = this.professionalService.professionals;
+  loading = this.professionalService.loading;
+  error = this.professionalService.error;
+  formation: Formation[] = this.professionalService.getFormation();
+  selectedProfile = signal<ProfessionalProfile | null>(null);
+  hoveredProfile = signal<ProfessionalProfile | null>(null);
+  
+  
+  topProfessionals = computed(() => this.professionals().slice(0, 11));
+  title = signal('SofttekFifa');
 
-  constructor(private professionalService: ProfessionalService) { }
-  ngOnInit(): void {
-    this.loadData();
+  constructor() {}
+  
+  toggleCard(profile: ProfessionalProfile): void {
+    const current = this.selectedProfile();
+    this.selectedProfile.set(current?.IS === profile.IS ? null : profile);
   }
 
-  loadData(): void {
-    this.professionalService.getProfessionals().subscribe(
-      (profiles: ProfessionalProfile[]) => {
-        this.professionals = profiles.slice(0, 11);
-      }
-    );
-    this.formation = this.professionalService.getFormation();
+  openProfileModal(profile: ProfessionalProfile): void {
+    this.selectedProfile.set(profile);
   }
 
-  onProfileHover(profile: ProfessionalProfile): void {
-    this.hoveredProfile = profile;
-  }
+  
 
-  onProfileLeave(): void {
-    this.hoveredProfile = null;
-  }
-
-  getRatingColorClass(rating: number): string {
-    const colorType = this.professionalService.getRatingColor(rating);
-    return `rating-${colorType}`;
-  }
-
-  parseSkills(skillsText: string): string[] {
-    return this.professionalService.parseSkills(skillsText).slice(0, 6);
-  }
-
-  getLanguagesText(languages: string): string {
-    return languages.replace('IDIOMAS\n', '');
-  }
-
-  toggleCard(profile: any) {
-  if (this.selectedProfile?.id === profile.id) {
-    this.selectedProfile = null; 
-  } else {
-    this.selectedProfile = profile; 
-  }
-}
-
-openProfileModal(profile: any) {
-    this.selectedProfile = profile;
-  }
 
 }

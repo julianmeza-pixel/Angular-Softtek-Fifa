@@ -1,0 +1,13 @@
+<div class="rol-container">
+  <span [ngClass]="(is.SENIORITY | seniorityIcon).color">
+                  {{ (is.SENIORITY | seniorityIcon).icon }}
+  </span>
+</div>
+<div class="rol-container">
+  @if (is.IS && is.IS.trim() !== '') {
+    <span class="rol-text">{{ is.IS | uppercase}}</span>
+  } @else {
+    <span class="rol-text rol-fallback">{{fallbackText}}</span>
+  }
+  
+</div>

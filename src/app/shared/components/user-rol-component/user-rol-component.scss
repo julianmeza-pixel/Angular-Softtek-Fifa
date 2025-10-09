@@ -1,0 +1,21 @@
+.rol-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rol-text {
+  display: inline-block;
+  text-align: center;
+  font-weight: 450;
+  line-height: 0.8rem;
+  color: #004080;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: clamp(0.65rem, 1.5vw, 0.7rem);
+}
+
+.rol-fallback {
+  color: #888;
+  font-style: italic;
+}

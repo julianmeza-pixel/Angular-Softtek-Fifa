@@ -1,9 +1,10 @@
 <div class="fifa-container">
+  
   <div class="field-layer">
     <app-stadium></app-stadium>
   </div>
   <div class="players-layer">
-    @for (profile of professionals; let i = $index; track profile.IS) {
+    @for (profile of topProfessionals(); let i = $index; track profile.IS) {
       <app-professional-card
         [profile]="profile"
         class="player-card"
@@ -19,9 +20,10 @@
     }
   </div>
   
+  @if (selectedProfile()) {
   <app-modal-details 
-    *ngIf="selectedProfile" 
-    [profile]="selectedProfile" 
-    (closeModal)="selectedProfile = null">
+      [profile]="selectedProfile()" 
+      (closeModal)="selectedProfile.set(null)">
   </app-modal-details>
+}
 </div>

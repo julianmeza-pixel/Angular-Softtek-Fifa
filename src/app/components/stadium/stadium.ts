@@ -1,13 +1,16 @@
 import { Component, AfterViewInit, ElementRef, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
+import { FiltersComponent } from "../../shared/components/filters-component/filters-component";
+import { ButtonFiltersComponent } from "../../shared/components/button-filters-component/button-filters-component";
 
 
 @Component({
   selector: 'app-stadium',
   standalone: true,
   templateUrl: './stadium.html',
-  styleUrls: ['./stadium.scss']
+  styleUrls: ['./stadium.scss'],
+  imports: [FiltersComponent, ButtonFiltersComponent]
 })
 export class Stadium implements AfterViewInit {
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
@@ -91,6 +94,33 @@ export class Stadium implements AfterViewInit {
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(window.innerWidth, window.innerHeight);
     });
+  }
+
+  categoryOptions = [
+  { value: 'admin', label: 'Administrador' },
+  { value: 'client', label: 'Cliente' },
+];
+
+statusOptions = [
+  { value: 'active', label: 'Activo' },
+  { value: 'inactive', label: 'Inactivo' },
+];
+
+typeOptions = [
+  { value: 'premium', label: 'Premium' },
+  { value: 'standard', label: 'Estándar' },
+];
+
+onCategoryFilter(value: string) {
+  console.log('Filtro categoría:', value);
+  }
+
+  onStatusFilter(value: string) {
+    console.log('Filtro estado:', value);
+  }
+
+  onTypeFilter(value: string) {
+    console.log('Filtro tipo:', value);
   }
 
 }

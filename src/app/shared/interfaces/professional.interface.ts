@@ -4,7 +4,8 @@ export interface ProfessionalProfile {
   ROL: string;
   IDIOMAS: string;
   CERTIFICACIONES: string;
-  rating: number;
+  SENIORITY: string;
+  fotoUrl?: string | null;
 }
 
 export interface Formation {

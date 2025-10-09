@@ -1,420 +1,61 @@
-* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 20px;
-    }
-    .card-preview {
-      position: relative;
-      top: 20px;
-    }
+:host {
+  --glass-bg: rgba(110, 97, 118, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --text-color: #ffffff;
+  --gold-text: #ffd700;
+  --softtek: linear-gradient(90deg,  #003d82 0%, #0056b3 25%, #7ed321 50%, #9ee83f 100%);
+  --azul-sftk: linear-gradient( 90deg, #004080 0%, #0056b3 40%, #0073e6 80%, #004080 100% );
+  --dark: linear-gradient( 135deg,  #0f0f0f 0%, #2d2d2d 25%, #4a4a4a 50%, #2d2d2d 75%, #0f0f0f 100% ); 
+  --initial-fifa:   linear-gradient(135deg,  #ffffff 0%,  #e6e6e6 15%,  #cccccc 30%,  #febe10 45%,   #cccccc 55%,  #e6e6e6 70%,  #ffffff 85%,  #febe10 92%,  #ffffff 100%);
+}
 
-    .flip-instruction {
-      text-align: center;
-      color: #666;
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
 
-    .card {
-      position: relative;
-     
-      background: #ffffff;
-      perspective: 1000px;
-      cursor: pointer;
-      clip-path: polygon(8% 0%,
-          92% 0%,
-          100% 8%,
-          100% 85%,
-          92% 92%,
-          85% 95%,
-          65% 98%,
-          50% 100%,
-          35% 98%,
-          15% 95%,
-          8% 92%,
-          0% 85%,
-          0% 8%);
-    }
 
-    .card-inner-flip {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.8s ease;
-    }
 
-    .card.flipped .card-inner-flip {
-      transform: rotateY(180deg);
-    }
 
-    .card-front,
-    .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      clip-path: polygon(8% 0%, 92% 0%, 100% 8%, 100% 85%, 92% 92%, 85% 95%, 65% 98%, 50% 100%, 35% 98%, 15% 95%, 8% 92%, 0% 85%, 0% 8%);
-      border-radius: 10px;
-      overflow: hidden;
-      
-    }
 
-    .card-front {
-      z-index: 2;
-      background: white;
-    }
 
-    .card-back {
-      transform: rotateY(180deg);
-      background: #f3f4f6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-    }
 
-    .back-content {
-      text-align: center;
-      padding: 1.5rem;
-      color: #1f2937;
-      width: 100%;
-    }
 
-    .golden-border {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
-      clip-path: polygon(8% 0%,
-          92% 0%,
-          100% 8%,
-          100% 85%,
-          92% 92%,
-          85% 95%,
-          65% 98%,
-          50% 100%,
-          35% 98%,
-          15% 95%,
-          8% 92%,
-          0% 85%,
-          0% 8%);
-    }
 
-    .card-inner {
-      position: absolute;
-      inset: 4px;
-      background: #ffffff;
-      clip-path: polygon(8% 0%,
-          92% 0%,
-          100% 8%,
-          100% 85%,
-          92% 92%,
-          85% 95%,
-          65% 98%,
-          50% 100%,
-          35% 98%,
-          15% 95%,
-          8% 92%,
-          0% 85%,
-          0% 8%);
-      padding: 0.2rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .decorative-curves {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 128px;
-      height: 32px;
-      z-index: 10;
-    }
-
-    .decorative-curves svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .card-header {
-      text-align: center;
-      margin-top: 0.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .back-content h3 {
-      color: #f59e0b;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .back-content .skill-list {
-      text-align: left;
-      max-width: 250px;
-      margin: 0 auto;
-    }
-
-    .back-content .skill-item-back {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid #e5e7eb;
-      font-size: 0.875rem;
-    }
-
-    .back-content .skill-item-back:last-child {
-      border-bottom: none;
-    }
-
-    .back-content .skill-name {
-      color: #374151;
-      font-weight: 600;
-    }
-
-    .back-content .skill-level {
-      color: #f59e0b;
-      font-weight: bold;
-    }
-
-    .card-level {
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: #f59e0b;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-position {
-      font-size: 0.875rem;
-      
-      color: #374151;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .card-name {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .card-player-name {
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: #1f2937;
-      margin-bottom: 0.25rem;
-      text-transform: uppercase;
-      letter-spacing: 0.025em;
-    }
-
-    .card-experience {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #6b7280;
-      margin-bottom: 0.25rem;
-    }
-
-    .card-company {
-      font-size: 0.875rem;
-      color: #f59e0b;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-    }
-
-    .card-stats {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 0.75rem;
-      margin-top: 1rem;
-      padding: 0.5rem;
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0.5rem;
-    }
-
-    .stat-value {
-      color: #1f2937;
-      font-weight: bold;
-      font-size: 1.5rem;
-      line-height: 1;
-      margin-bottom: 0.25rem;
-    }
-
-    .stat-label {
-      color: #6b7280;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.625rem;
-    }
-
-    .back-skills-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .back-skill-input {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .back-skill-input input[type="text"] {
-      flex: 1;
-    }
-
-    .back-skill-input input[type="number"] {
-      width: 60px;
-    }
-
-    .add-skill-btn {
-      background: #009688;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 12px;
-      margin-top: 10px;
-    }
-
-    .add-skill-btn:hover {
-      background: #00796b;
-    }
-
-    .remove-skill-btn {
-      background: #f44336;
-      color: white;
-      border: none;
-      padding: 4px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .remove-skill-btn:hover {
-      background: #d32f2f;
-    }
-
-    @media (max-width: 1024px) {
-      .container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .card-container {
-        position: static;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
-    .player-card {
+.golden-border {
   position: absolute;
-  width: 10%;
-  min-width: 70px;
-  max-width: 120px;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  inset: -3px; 
+  z-index: 1; 
+  background: var(--initial-fifa);
+  background-size: 200% 200%;
+  animation: gold-flow 4s ease-in-out infinite alternate;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 8%, 100% 85%, 92% 92%, 85% 95%, 65% 98%, 50% 100%, 35% 98%, 15% 95%, 8% 92%, 0% 85%, 0% 8%);
+  transition: all 0.6s ease;
 }
 
-
-
-
-.card-container {
-  perspective: 1000px;
-  transition: all 0.4s ease-in-out;
-  z-index: 1;
-}
-
-.card-container.flipped .card-inner-flip {
-  transform: rotateY(180deg);
-}
-
-.card-inner-flip {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
+.card-front .card-inner {
   position: relative;
-}
-
-.card-front, .card-back {
-  width: 100%;
+  z-index: 10 !important;
+  padding: 1vw;
   height: 100%;
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 12px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--text-color) !important;
 }
 
-.card-back {
-  transform: rotateY(180deg);
-  background: white;
-  padding: 20px;
-  overflow-y: auto;
-}
 
-/* ⭐ expansión modal */
-.card-container.expanded {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 420px;
-  height: 600px;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-}
 
-/* brillo diagonal */
-.card-inner-flip::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.0) 60%
-  );
-  transform: rotate(25deg);
-  animation: shine 3s infinite;
-}
 
-@keyframes shine {
+
+
+@keyframes gold-flow {
   0% {
-    transform: translateX(-100%) rotate(25deg);
+    background-position: 0% 50%;
+    filter: brightness(1);
   }
   100% {
-    transform: translateX(100%) rotate(25deg);
+    background-position: 100% 50%;
+    filter: brightness(1.1);
   }
 }
 
 
-  
+

@@ -1,0 +1,32 @@
+
+<div class="avatar" role="img" [attr.aria-label]="alt">
+  @if (user?.fotoUrl)
+  {
+    <picture>
+      <img
+        [src]="currentSrc"
+        alt="{{ alt }}"
+        class="avatar__img"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        (error)="onImgError($event)"
+        (load)="onImgLoad()"
+      />
+    </picture>
+  }
+  @else
+  {
+    <picture>
+      <img
+        [src]="defaultImage"
+        alt="{{ alt }}"
+        class="avatar__img"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        (error)="onImgError($event)"
+      />
+    </picture>
+  }
+</div>

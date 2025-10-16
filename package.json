@@ -1,13 +1,10 @@
 {
   "name": "softtek-fifa",
   "version": "0.0.0",
-  "engines": {     "node": ">=22.20.0",     "npm": ">=11.0.0"   },
   "scripts": {
     "ng": "ng",
+    "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng build --configuration production && ng run SofttekFifa:server:production",
-    "serve:ssr": "node dist/SofttekFifa/server/main.js",
-    "start": "node dist/SofttekFifa/server/main.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:SofttekFifa": "node dist/SofttekFifa/server/server.mjs"

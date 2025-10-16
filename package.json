@@ -6,7 +6,7 @@
     "build": "ng build",
     "build:ssr": "ng build --configuration production && ng run SofttekFifa:server:production",
     "serve:ssr": "node dist/SofttekFifa/server/main.js",
-    "start": "npm run serve:ssr",
+    "start": "node dist/SofttekFifa/server/main.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:SofttekFifa": "node dist/SofttekFifa/server/server.mjs"

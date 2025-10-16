@@ -1,6 +1,7 @@
 {
   "name": "softtek-fifa",
   "version": "0.0.0",
+  "engines": {     "node": ">=22.20.0",     "npm": ">=11.0.0"   },
   "scripts": {
     "ng": "ng",
     "build": "ng build",

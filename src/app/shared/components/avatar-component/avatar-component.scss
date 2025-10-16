@@ -1,17 +1,15 @@
 :host {
   display: inline-block;
-  --avatar-size-mobile: 48px;
-  --avatar-size-tablet: 64px;
-  --avatar-size-desktop: 80px;
+  --avatar-size-desktop: 70%;
 }
 
-.avatar {
 
-  width: var(--avatar-size-mobile);
-  height: var(--avatar-size-mobile);
-  
+.avatar {
+ box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  border: 0.1rem solid #FEBE10;
+  border-radius: 50%;
+  margin: 0.5rem auto;
  
-  
   position: relative;
  
 }
@@ -43,27 +41,9 @@
   }
 }
 
-.avatar__img {
-  width: auto;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-  user-select: none;
-  -webkit-user-drag: none;
-}
 
-.avatar:focus-within {
-  outline: 2px solid rgba(0, 120, 212, 0.15);
-  outline-offset: 2px;
-}
 
-.avatar {
-  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
-  border: 0.1rem solid #FEBE10;
-  border-radius: 50%;
-  margin: 0.5rem auto;
-}
+
+
 
 

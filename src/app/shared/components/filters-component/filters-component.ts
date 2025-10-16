@@ -13,7 +13,7 @@ import { FiltersServices } from '../../../services/filters-services';
 export class FiltersComponent implements OnInit {
   @Input() label = '';
   @Input() options: { value: string; label: string }[] = [];
-  @Input() type: 'roles' | 'seniority' | 'technology' = 'roles';
+  @Input() type: 'role' | 'seniority' | 'technology' = 'role';
 
   control = new FormControl('');
   private filtersService = inject(FiltersServices);
@@ -25,7 +25,7 @@ export class FiltersComponent implements OnInit {
     this.control.valueChanges.subscribe((value) => {
       if (value !== null) {
         switch (this.type) {
-          case 'roles':
+          case 'role':
             this.filtersService.setRoles(value);
             break;
           case 'seniority':
@@ -41,8 +41,8 @@ export class FiltersComponent implements OnInit {
 
   private getInitialValue(): string | null {
     switch (this.type) {
-      case 'roles':
-        return this.filtersService.roles();
+      case 'role':
+        return this.filtersService.role();
       case 'seniority':
         return this.filtersService.seniority();
       case 'technology':

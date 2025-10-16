@@ -10,15 +10,6 @@
   --initial-fifa:   linear-gradient(135deg,  #ffffff 0%,  #e6e6e6 15%,  #cccccc 30%,  #febe10 45%,   #cccccc 55%,  #e6e6e6 70%,  #ffffff 85%,  #febe10 92%,  #ffffff 100%);
 }
 
-
-
-
-
-
-
-
-
-
 .golden-border {
   position: absolute;
   inset: -3px; 
@@ -26,7 +17,7 @@
   background: var(--initial-fifa);
   background-size: 200% 200%;
   animation: gold-flow 4s ease-in-out infinite alternate;
-  clip-path: polygon(8% 0%, 92% 0%, 100% 8%, 100% 85%, 92% 92%, 85% 95%, 65% 98%, 50% 100%, 35% 98%, 15% 95%, 8% 92%, 0% 85%, 0% 8%);
+  clip-path: polygon(8% 0%, 92% 0%, 100% 8%, 100% 85%, 92% 92%, 85% 95%, 65% 98%, 50% 100%, 35% 98%, 15% 95%, 8% 92%, 0% 85%, 0% 8%); // propiedad forma, agregar el 
   transition: all 0.6s ease;
 }
 
@@ -40,11 +31,6 @@
   justify-content: center;
   color: var(--text-color) !important;
 }
-
-
-
-
-
 
 @keyframes gold-flow {
   0% {

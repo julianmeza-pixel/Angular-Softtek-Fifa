@@ -64,7 +64,7 @@ export class Stadium implements AfterViewInit {
     grassTexture.repeat.set(4, 4);
 
     const field = new THREE.Mesh(
-      new THREE.PlaneGeometry(105, 68),
+      new THREE.PlaneGeometry(150, 68),
       new THREE.MeshStandardMaterial({ map: grassTexture })
     );
     field.rotation.x = -Math.PI / 2.0;
@@ -75,7 +75,7 @@ export class Stadium implements AfterViewInit {
     // Líneas de la cancha
     const linesTexture = new THREE.TextureLoader().load('assets/textures/lines_stadium_transparent.png');
     const lines = new THREE.Mesh(
-      new THREE.PlaneGeometry(105, 68),
+      new THREE.PlaneGeometry(150, 90),
       new THREE.MeshBasicMaterial({ map: linesTexture, transparent: true, depthWrite: false })
     );
     lines.rotation.x = -Math.PI / 2.0;

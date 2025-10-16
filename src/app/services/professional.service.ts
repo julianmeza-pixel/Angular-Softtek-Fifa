@@ -53,17 +53,17 @@ export class ProfessionalService {
 
 
   private formation: Formation[]= [
-  { x: 51, y: 80 }, // Portero
-  { x: 29, y: 65 }, // Defensa izquierdo
-  { x: 43, y: 65 }, // Defensa central izq
-  { x: 59, y: 65 }, // Defensa central der
-  { x: 73, y: 65 }, // Defensa derecho
-  { x: 36, y: 50 }, // Mediocentro izq
+  { x: 51, y: 85 }, // Portero
+  { x: 20, y: 70 }, // Defensa izquierdo
+  { x: 38, y: 70 }, // Defensa central izq
+  { x: 63, y: 70 }, // Defensa central der
+  { x: 81, y: 70 }, // Defensa derecho
+  { x: 29, y: 50 }, // Mediocentro izq
   { x: 51, y: 50 }, // Mediocentro
-  { x: 66, y: 50 }, // Mediocentro der
-  { x: 43, y: 30 }, // Delantero izq
-  { x: 51, y: 25 }, // Delantero centro
-  { x: 59, y: 30 }  // Delantero der
+  { x: 72, y: 50 }, // Mediocentro der
+  { x: 38, y: 25 }, // Delantero izq
+  { x: 51, y: 20 }, // Delantero centro
+  { x: 64, y: 25 }  // Delantero der
 ];
 
   

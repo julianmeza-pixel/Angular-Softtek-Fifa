@@ -1,17 +1,17 @@
  <button (click)="toggleFilterPopup()"
-    class="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 text-white px-4 py-2 rounded-full shadow-md hover:from-blue-500 hover:to-blue-300 transition-all duration-200 ease-in-out">
+    class="flex items-center gap-2 px-4 py-2 text-white transition-all duration-200 ease-in-out rounded-full shadow-md bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-500 hover:to-blue-300">
     <i class="fa-solid fa-sliders"></i>
   </button>
   @if (showFilters()) {
-  <div class="absolute  mt-3 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 p-4 z-50 animate-fadeIn">
-    <h3 class="text-gray-700 font-semibold mb-3 flex items-center gap-2">
+  <div class="absolute z-50 w-64 p-4 mt-3 bg-white border border-gray-100 shadow-xl rounded-2xl animate-fadeIn">
+    <h3 class="flex items-center gap-2 mb-3 font-semibold text-gray-700">
       <i class="fa-solid fa-sliders"></i> Aplicar filtros
     </h3>
     <div class="flex flex-col gap-2">
         <app-filters-component
             label="Rol"
             [options]="rolesList"
-            type="roles"
+            type="role"
         ></app-filters-component>
 
         <app-filters-component
@@ -28,7 +28,7 @@
     <div class="flex justify-end gap-2 mt-4">
       <button
         (click)="clearFilters()"
-        class="px-4 py-2 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-800 transition-colors"
+        class="px-4 py-2 text-sm text-gray-600 transition-colors border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-800"
       >
         Limpiar
       </button>

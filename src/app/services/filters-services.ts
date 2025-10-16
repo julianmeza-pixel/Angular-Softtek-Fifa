@@ -11,7 +11,7 @@ export class FiltersServices {
   private apiUrlSeniority =environment.apiUrlSeniority;
   private apiUrlTechno = environment.apiUrlTechno;
 
-  roles = signal<string | null>(null);
+  role = signal<string | null>(null);
   seniority = signal<string | null>(null);
   technology = signal<string | null>(null);
   
@@ -20,7 +20,7 @@ export class FiltersServices {
   technologyList = signal<{ value: string, label: string }[]>([]);
 
   filters = computed(() => ({
-    roles: this.roles(),
+    role: this.role(),
     seniority: this.seniority(),
     technology: this.technology(),
   }));
@@ -94,7 +94,7 @@ export class FiltersServices {
 
 
   setRoles(value: string | null) {
-    this.roles.set(value);
+    this.role.set(value);
   }
 
   setSeniority(value: string | null) {
@@ -106,7 +106,7 @@ export class FiltersServices {
   }
 
   resetFilters() {
-    this.roles.set(null);
+    this.role.set(null);
     this.seniority.set(null);
     this.technology.set(null);
   }

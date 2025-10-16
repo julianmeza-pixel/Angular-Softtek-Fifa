@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
     "build": "ng build",
+    "build:ssr": "ng build --configuration production && ng run SofttekFifa:server:production",
+    "serve:ssr": "node dist/SofttekFifa/server/main.js",
+    "start": "npm run serve:ssr",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:SofttekFifa": "node dist/SofttekFifa/server/server.mjs"
@@ -33,7 +35,6 @@
     "@angular/platform-browser": "^20.3.0",
     "@angular/platform-server": "^20.3.0",
     "@angular/router": "^20.3.0",
-    "@angular/ssr": "^20.3.0",
     "@fortawesome/fontawesome-free": "^7.1.0",
     "@ng-bootstrap/ng-bootstrap": "^19.0.1",
     "express": "^5.1.0",
@@ -46,6 +47,7 @@
     "@angular/build": "^20.3.0",
     "@angular/cli": "^20.3.0",
     "@angular/compiler-cli": "^20.3.0",
+    "@angular/ssr": "^20.3.6",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",

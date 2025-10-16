@@ -3,6 +3,6 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/2ad95243-9ccc-451f-a0b8-a71574e7ce1f/resourceGroups/rg-fifa-card/providers/Microsoft.Web/sites/SofttekFifa",
     "appService.deploySubpath": "dist\\SofttekFifa"
 }

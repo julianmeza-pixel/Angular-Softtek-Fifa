@@ -62,17 +62,20 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular/build:dev-server",
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/SofttekFifa/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
           "configurations": {
             "production": {
-              "buildTarget": "SofttekFifa:build:production"
-            },
-            "development": {
-              "buildTarget": "SofttekFifa:build:development"
+              "outputHashing": "media",
+              "sourceMap": false,
+              "optimization": true
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
